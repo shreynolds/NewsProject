@@ -6,7 +6,7 @@ const mockAPIResponse = require('./mockAPI.js')
 
 console.log(`Your API key is ${process.env.key}`);
 
-apiKey = process.env.key
+const apiKey = process.env.key
 
 const fetch = require("node-fetch");
 
@@ -39,9 +39,7 @@ app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
 
-app.post('/article', getInfo)
-
-getInfo = async function(req, res){
+async function getInfo (req, res){
     const url = req.body.url
     console.log(url)
     const info = await fetch('https://api.meaningcloud.com/sentiment-2.1?key=' + apiKey + '&of=json&url=' + url + '&lang=en')
@@ -50,5 +48,7 @@ getInfo = async function(req, res){
     console.log(infojson)
     res.send(infojson)
 }
+
+app.post('/article', getInfo)
 
 module.exports = getInfo
