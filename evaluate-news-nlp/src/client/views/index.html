@@ -3,19 +3,16 @@
     <head>
         <meta charset="utf-8">
         <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
+        
     </head>
 
     <body>
 
         <header>
             <div class="">
-                Logo test
+                Logo
             </div>
+            <h1> Welcome to the Meaning Cloud Sentiment Analysis Page!</h1>
             <div class="">
                 navigation 
             </div>
@@ -24,22 +21,27 @@
         <main>
             <section>
                 <p>
-                    Please enter a valid URL, and you will get info about it
+                    Please enter a valid URL, and you will get information about it
                 </p>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
+                    <input id="name" type="text" name="input" value="" placeholder="URL">
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
             <section>
 
             <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+                <strong>Article Analysis:</strong>
+                <div id="error"></div>
+                <div id="score"></div>
+                <div id="agreement"></div>
+                <div id ="subjectivity"></div>
+                <div id ="confidence"></div> 
+                <div id ="irony"></div>
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>Thank you for using!!</p>
         </footer>
         
     </body>  

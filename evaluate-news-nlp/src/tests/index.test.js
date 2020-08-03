@@ -1,0 +1,1 @@
+let getInfo = require('./routes/index')

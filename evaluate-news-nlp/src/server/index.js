@@ -3,13 +3,12 @@ dotenv.config();
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
-var aylien = require("aylien_textapi");
 
-var textapi = new aylien({
-    application_id: process.env.API_ID,
-    application_key: process.env.API_KEY
- });
+console.log(`Your API key is ${process.env.key}`);
 
+apiKey = process.env.key
+
+const fetch = require("node-fetch");
 
 const app = express()
 /* Middleware*/
@@ -27,8 +26,8 @@ app.use(express.static('dist'))
 console.log(__dirname)
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
+    //res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
 // designates what port the app will listen to for incoming requests
@@ -40,12 +39,16 @@ app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
 
-app.post('/article', function(req, res){
-    console.log(req.body)
-    textapi.sentiment({
-        'url': req.body.url
-      }, function(response) {
-          console.log(response)
-          res.send(response)
-      }); 
-})
+app.post('/article', getInfo)
+
+getInfo = async function(req, res){
+    const url = req.body.url
+    console.log(url)
+    const info = await fetch('https://api.meaningcloud.com/sentiment-2.1?key=' + apiKey + '&of=json&url=' + url + '&lang=en')
+    console.log(info)
+    infojson = await info.json()
+    console.log(infojson)
+    res.send(infojson)
+}
+
+module.exports = getInfo

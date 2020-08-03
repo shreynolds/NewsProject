@@ -1,0 +1,14 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+    background-color: aliceblue;
+    height: 100px;
+    align-items: center;
+}
+
+header h1{
+    font-size: 2em;
+    font-weight: bold;
+    color: pink;
+}
